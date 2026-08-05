@@ -90,6 +90,18 @@ describe('SiapService', () => {
       expect(profile.angkatan).toBe('2024');
       expect(profile.status).toBe('AKTIF');
       expect(profile.semesterBerjalan).toBe('2026/2027 Ganjil');
+      // Biodata detail fields (Task 1)
+      expect(profile.fotoUrl).toContain('disk.undip.ac.id');
+      expect(profile.tempatLahir).toBe('KUALA KAPUAS');
+      expect(profile.tanggalLahir).toBe('26 Mei 2006');
+      expect(profile.nik).toBe('620301 260506 0001');
+      expect(profile.namaIbu).toBe('SITI HAJJAH MARIA ULFAH');
+      expect(profile.kodeKewarganegaraan).toBe('ID');
+      expect(profile.nomorHp).toBe('089693048519');
+      expect(profile.emailSso).toBe('kemalfaza26@students.undip.ac.id');
+      expect(profile.emailPribadi).toBe('kemalfaza26@gmail.com');
+      expect(profile.alamatAsal).toContain('Jalan Kapuas');
+      expect(profile.alamatSekarang).toContain('Tanjungsari');
     });
   });
 
