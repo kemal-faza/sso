@@ -98,7 +98,7 @@ describe('DashboardView', () => {
     const w = mount(DashboardView);
     await flushPromises();
     await w.find('[data-test="service-siap"]').trigger('click');
-    await w.findAll('button').find((b) => b.text().includes('Biodata'))!.trigger('click');
+    await w.findAll('button').find((b) => b.text().includes('Biodata'))!.trigger('mousedown');
     await flushPromises();
     expect(w.text()).toContain('KUALA KAPUAS');
     expect(w.text()).toContain('620301 260506 0001');
