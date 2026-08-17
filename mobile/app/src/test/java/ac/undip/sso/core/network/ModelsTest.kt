@@ -92,4 +92,21 @@ class ModelsTest {
     fun `sksKumulatif is zero for empty khs`() {
         assertEquals(0.0, SiapKhs().sksKumulatif, 0.001)
     }
+
+    @Test
+    fun `parses SiapProfile personal fields from real backend shape`() {
+        val s =
+            """{"nama":"MUHAMAD KEMAL FAZA","nim":"24060124120013","fakultas":"SAINS DAN MATEMATIKA","prodi":"Informatika S1","angkatan":"2024","semesterBerjalan":"2026/2027 Ganjil","status":"AKTIF","tempatLahir":"KUALA KAPUAS","tanggalLahir":"26 Mei 2006","nik":"620301 260506 0001","namaIbu":"SITI HAJJAH MARIA ULFAH","kodeKewarganegaraan":"ID","nomorHp":"089693048519","emailSso":"kemalfaza26@students.undip.ac.id","emailPribadi":"kemalfaza26@gmail.com","alamatAsal":"Jalan Kapuas","alamatSekarang":"Jl. Tanjungsari"}"""
+        val p = lenientJson.decodeFromString<SiapProfile>(s)
+        assertEquals("KUALA KAPUAS", p.tempatLahir)
+        assertEquals("26 Mei 2006", p.tanggalLahir)
+        assertEquals("620301 260506 0001", p.nik)
+        assertEquals("SITI HAJJAH MARIA ULFAH", p.namaIbu)
+        assertEquals("ID", p.kodeKewarganegaraan)
+        assertEquals("089693048519", p.nomorHp)
+        assertEquals("kemalfaza26@students.undip.ac.id", p.emailSso)
+        assertEquals("kemalfaza26@gmail.com", p.emailPribadi)
+        assertEquals("Jalan Kapuas", p.alamatAsal)
+        assertEquals("Jl. Tanjungsari", p.alamatSekarang)
+    }
 }
